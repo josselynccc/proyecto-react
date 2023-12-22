@@ -1,35 +1,50 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useState } from 'react';
+import axios from "axios";
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const API_URL= import.meta.env.VITE_API_URL
+
+  const [criptos,setcriptos]=useState()
+
+  /* useEffect(() => {
+    fetch(`${API_URL}assets`)
+      .then((resp) => resp.json())
+      .then((data) => {
+        console.log(data)
+        setcriptos(data.data)
+      })
+      .catch(() => {
+        console.error("La petición falló");
+      });
+  }, []); */
+
+  useEffect(() => {
+    axios.get(`${API_URL}assets`)
+      .then((data) => {
+        console.log(data)
+        setcriptos(data.data.data)
+      })
+      .catch(() => {
+        console.error("La petición falló");
+      });
+  }, []);
+
+
+
+  if(!criptos) return <><span>Cargando...</span></>
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <h1>Lista de criptomonedas</h1>
+      <ol>
+        {
+          criptos.map(({name,priceUsd,id}) => (
+            <li key={id}>Nombre : {name} Precio:{priceUsd}</li>
+        ))}
+      </ol>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
