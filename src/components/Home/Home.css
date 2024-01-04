@@ -9,11 +9,21 @@
     width: 100%;
     border: 3px solid rgb(116, 173, 179);
     border-radius: 10px;
-    align-items: center;
 }
 .HomeCripto{
     font-size: 30px;
     text-decoration: none;
     color: white;
     text-align: center;
+}
+
+@media screen and (max-width:460px) {
+
+    .HomeTitle{
+        padding-top: 4em;
+        font-size: 30px;
+    }
+    .HomeCripto{
+        font-size: 15px;
+    }
 }
