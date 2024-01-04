@@ -1,0 +1,33 @@
+.contaniner-cripto{
+    border: 1px solid rgb(72, 134, 160);
+    padding: 1em;
+    border-radius: 5%;
+    border-left: 1rem solid rgb(72, 134, 160);
+}
+
+.LinkCripto{
+    text-decoration: none;
+}
+
+.contaniner-cripto:hover{
+    background-color: rgb(72, 134, 160);
+}
+
+h1{
+    text-align: center;
+    color: white;
+}
+p{
+    color: rgb(100, 209, 233);
+    margin: 0;
+}
+p span{
+color: rgb(175, 173, 170);
+}
+
+.green{
+    color: rgb(112, 217, 112);
+}
+.red{
+    color: rgb(250, 19, 19);
+}

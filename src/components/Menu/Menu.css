@@ -1,0 +1,22 @@
+.Menu{
+    position: fixed;
+    margin-bottom: 2em;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: linear-gradient(#0f0c29,#252150);
+    border-bottom: 2px solid #7f7f83;
+}
+
+.Menu nav ul{
+    list-style-type: none;
+    display: flex;
+    gap: 2em;
+    flex-wrap: wrap;
+}
+
+.Menu nav ul li a{
+    text-align: center;
+    text-decoration: none;
+    color: #b6b2b2;
+}

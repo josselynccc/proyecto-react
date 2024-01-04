@@ -1,3 +1,25 @@
-:root {
-  background-color: rgba(255, 255, 255, 0.87);
+body{
+  margin: 0;
+  background-color: rgba(0, 15, 22);
+  background: linear-gradient(#0f0c29,#302b63, #24243e);
+}
+:root{
+  min-height: 100vh;
+  align-items: center;
+}
+.ContainerMenu{
+  width: 100%;
+  padding-bottom: 3em;
+}
+
+.ContainerBody{
+  text-align: center;
+  padding: 2em;
+}
+
+.Tcenter{
+  text-align: center;
+}
+.Ccenter{
+  align-items: center;
 }
