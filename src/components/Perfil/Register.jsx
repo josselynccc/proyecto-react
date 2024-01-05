@@ -24,7 +24,7 @@ const Register = ()=>{
         e.preventDefault()
         console.log(e)
 
-        axios.post(`http://localhost:3000/api/1.0/auth/register`, user)
+        axios.post(`https://servidordeprueba-efb66b95c2c5.herokuapp.com/api/1.0/auth/register`, user)
         .then(data=>{
             console.log(data)
             navigation('/login')
