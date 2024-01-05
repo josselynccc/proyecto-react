@@ -1,46 +1,35 @@
 import { useState } from "react"
 import axios from "axios";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import "./Perfil.css"
 import Imagen from "../../assets/usuario.png"
+import { Link } from "react-router-dom";
 
 const Login =()=>{
     const[user,setUser]=useState({
         email:"",
-        password:""
+        password:"",
     })
 
     const [cargando,setCargando]=useState(false)
     const [error,setError]= useState(undefined)
 
-    const navigation= useNavigate()
 
     function submit(e){
         setCargando(true)
         e.preventDefault(); // para que no se dispare el formuladiro directamente y actualice la pagina
         //console.log(e.target)
         //console.log(user)
-        axios.post(`https://reqres.in/api/login`, user)
+        axios.post(`https://servidordeprueba-efb66b95c2c5.herokuapp.com/api/1.0/auth/login`, user)
         .then(data=>{
             setCargando(false)
-            localStorage.setItem("tokenUsuario",data.data.token)
-            navigation("/")
+            console.log(data.data)
+            localStorage.setItem("idUser",data.data.data._id)
+            localStorage.setItem("tokenUsuario",data.data.tokenSession)
         })
         .catch(e=>{ 
             setCargando(false)
             setError(e)
-            console.error(e)})
-            
-        axios.get(`https://reqres.in/api/users`, {})
-        .then(data=>{
-            const arraydata= data.data.data
-            const objData = arraydata.find(obj => obj.email === user.email)
-            localStorage.setItem("idUser",objData.id)
-            
-            console.log(objData.id)
-            console.log(user.email)
-        })
-        .catch(e=>{
             console.error(e)})
     }
 
@@ -79,6 +68,7 @@ const Login =()=>{
             <input type="submit" value={cargando ? "Cargando" : "Ingresar"} name="" id="" />
         </div>
         
+        <Link className="submit" to="/register"><input type="button" value="Registrarse" /></Link>
     </form>
     {error && <span className="error">{JSON.stringify(error.response.data)}</span>}
  </div>

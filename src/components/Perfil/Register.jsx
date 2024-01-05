@@ -7,7 +7,10 @@ import { useNavigate } from "react-router-dom";
 const Register = ()=>{
     const [user,setUser] = useState({
     email:"",
-    password:""
+    password:"",
+    nombre:"",
+    apellido:"",
+    edad:0,
     })
 
     const [cargando,setCargando] = useState(false)
@@ -17,24 +20,16 @@ const Register = ()=>{
 
     function submit(e){
         setCargando(true)
+
         e.preventDefault()
         console.log(e)
 
-        axios.post(`https://reqres.in/api/register`, user)
+        axios.post(`http://localhost:3000/api/1.0/auth/register`, user)
         .then(data=>{
             console.log(data)
-            navigation("/login")
-            }
-            )
+            navigation('/login')
+        })
             .catch(e=>{setError(e)})
-
-        axios.post(`https://reqres.in/api/users`, user)
-        .then(data=>{
-            console.log(data)})
-
-        axios.get(`https://gorest.co.in/public/v2/users`, user)
-        .then(data=>{
-            console.log(data)})
     }
 
 
@@ -67,8 +62,41 @@ const Register = ()=>{
                 }}
             />
         </div>
+        <div className="field">
+            <label htmlFor="nombre">Nombre</label>
+            <input required autoComplete="username" type="text" name="name" 
+                onChange={(e)=>{
+                    setUser({
+                        ...user, //que lea lo que hay en el user
+                        nombre: e.target.value
+                    })
+                }}
+            />
+        </div>
+        <div className="field">
+            <label htmlFor="apellido">Apellido</label>
+            <input required autoComplete="username" type="text" name="apellido" 
+                onChange={(e)=>{
+                    setUser({
+                        ...user, //que lea lo que hay en el user
+                        apellido: e.target.value
+                    })
+                }}
+            />
+        </div>
+        <div className="field">
+            <label htmlFor="edad">Edad</label>
+            <input required autoComplete="username" type="number" name="edad" 
+                onChange={(e)=>{
+                    setUser({
+                        ...user, //que lea lo que hay en el user
+                        edad: e.target.value
+                    })
+                }}
+            />
+        </div>
         <div className="submit">
-            <input type="submit" value={cargando ? "Cargando" : "Registrarse"} name="" id="" />
+            <input type="submit" value={cargando ? "Creando usuario" : "Registrarse"} name="" id="" />
         </div>
 
     </form>

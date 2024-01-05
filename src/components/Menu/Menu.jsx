@@ -16,7 +16,7 @@ const Menu = ()=>{
             <nav>
                 <ul>
                     <li><NavLink to="/">Inicio</NavLink></li>
-                    <li><NavLink to="/perfil">Perfil de {usuario.first_name} {usuario.last_name}</NavLink></li>
+                    <li><NavLink to="/perfil">Perfil de {usuario.nombre} {usuario.apellido}</NavLink></li>
                     <li><NavLink to="/criptomonedas">Lista de Criptomonedas</NavLink></li>
                     <li><NavLink to="/login">Inicio de sesión</NavLink></li>
                     <li><Link onClick={()=>{

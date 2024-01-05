@@ -13,7 +13,7 @@ export const Cripto=({id,name,priceUsd,symbol, changePercent24Hr})=>{
         <>
         <Link className='LinkCripto' to={`/criptomonedas/${id}`}>
             <div className='contaniner-cripto'>
-                <h1>{name}</h1>
+                <h2>{name}</h2>
                 <p>Precio : <span>{parseFloat(priceUsd).toFixed(4)}</span></p>
                 <p>Código : <span>{symbol}</span></p>
                 <p>Cambio 24hrs : <span className={color}>{parseFloat(changePercent24Hr).toFixed(3)}%</span></p>

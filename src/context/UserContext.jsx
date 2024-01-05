@@ -10,7 +10,7 @@ const UserContextProvider = ({children})=>{
     const [usuario, setUsuario]=useState({})
 
     function update(){
-        axios.get(`https://reqres.in/api/users/${id}`, usuario)
+        axios.get(`https://servidordeprueba-efb66b95c2c5.herokuapp.com/api/1.0/users/${id}`, usuario)
         .then(data =>{
             setUsuario(data.data.data)
             console.log(data)})

@@ -1,33 +1,24 @@
-import { useEffect, useState } from "react"
+import { useEffect,useContext } from "react"
 //import { UserContext } from "../../context/UserContext"
 //import Imagen  from "../../assets/usuario.png"
-import axios from "axios";
 import './Perfil.css';
+import { UserContext } from "../../context/UserContext"
+import {format} from "date-fns"
 
 const Perfil=()=>{
 
-    
-    const [datauser,setdatauser]= useState({})
+    const {usuario,update} = useContext(UserContext)
 
-    useEffect(()=>{
-        const token = localStorage.getItem("tokenUsuario")
-        const userID = localStorage.getItem("idUser")
-        if(token && userID){
-            axios.get(`https://reqres.in/api/users/${userID}`, {})
-            .then((data) =>{setdatauser(data.data.data)
-            console.log(data.data.data)
-            })
-            .catch((error)=>{ console.error ("error :", error)})
-        }
-    },[])
+    useEffect(()=>{update()},[])
     
     return (
         <div className="perfil">
           <h1>Perfil del Usuario</h1>
-          <img src={datauser.avatar} alt="" />
-          <p><span>First Name: </span>{datauser.first_name}</p>
-          <p><span>Last Name: </span>{datauser.last_name}</p>
-          <p><span>Email: </span>{datauser.email}</p>
+          <p><span>First Name:  </span>{usuario.nombre}</p>
+          <p><span>Last Name:  </span>{usuario.apellido}</p>
+          <p><span>Edad:  </span>{usuario.edad}</p>
+          <p><span>Email:  </span>{usuario.email}</p> <br />
+          <div>Agregado desde {format(new Date(usuario.createdAt), "dd/MM/yyyy")}</div>
         </div> 
       )
 
