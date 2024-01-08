@@ -27,3 +27,10 @@
         font-size: 15px;
     }
 }
+
+.div_alert{
+    top: 0;
+    right: 0;
+    position: absolute;
+    display: inline;
+}

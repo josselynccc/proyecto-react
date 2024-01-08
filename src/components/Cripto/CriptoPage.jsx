@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import axios from "axios";
 import { useParams } from "react-router-dom"
 import CriptoPageHistory from "./CriptoPageHistory";
-
+import Upper from "../Shared/upper"
 const CriptoPage=()=>{
 
     const API_URL= import.meta.env.VITE_API_URL
@@ -27,14 +27,14 @@ const CriptoPage=()=>{
 
     return (
         <>
-            <h1>{params.id}</h1>
+            <h1>{Upper(params.id)}</h1>
             
             <div>
-                <p>ranking: {cripto.rank}</p>
-                <p>simbolo: {cripto.symbol}</p>
-                <p>precio: {parseFloat(cripto.priceUsd).toFixed(3)}</p>
-                <p>comprar: {parseFloat(cripto.supply).toFixed(3)}</p>
-                <p>Precio de mercado: {parseFloat(cripto.marketCapUsd).toFixed(3)}</p>
+                <p>Ranking :  <span> { cripto.rank}</span></p>
+                <p>Simbolo :  <span> { cripto.symbol}</span></p>
+                <p>Precio :  <span> { parseFloat(cripto.priceUsd).toFixed(3)}</span></p>
+                <p>Comprar :  <span> { parseFloat(cripto.supply).toFixed(3)}</span></p>
+                <p>Precio de mercado :  <span> {parseFloat(cripto.marketCapUsd).toFixed(3)}</span></p>
             </div>
 
             <CriptoPageHistory/>

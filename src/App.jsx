@@ -4,6 +4,7 @@ import './index.css'
 
 const App = ()=>{
     if(!localStorage.getItem("tokenUsuario")) return <Navigate to="/login"></Navigate>
+
     return (
         <>
         <div className="ContainerMenu">

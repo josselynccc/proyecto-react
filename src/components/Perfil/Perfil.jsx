@@ -4,7 +4,7 @@ import { useEffect,useContext } from "react"
 import './Perfil.css';
 import { UserContext } from "../../context/UserContext"
 import {format} from "date-fns"
-
+import letter from "../Shared/letter"
 const Perfil=()=>{
 
     const {usuario,update} = useContext(UserContext)
@@ -13,12 +13,12 @@ const Perfil=()=>{
     
     return (
         <div className="perfil">
-          <h1>Perfil del Usuario</h1>
-          <p><span>First Name:  </span>{usuario.nombre}</p>
-          <p><span>Last Name:  </span>{usuario.apellido}</p>
+          <h1>Datos del Usuario</h1>
+          <p><span>First Name:  </span>{letter(usuario.nombre)}</p>
+          <p><span>Last Name:  </span>{letter(usuario.apellido)}</p>
           <p><span>Edad:  </span>{usuario.edad}</p>
           <p><span>Email:  </span>{usuario.email}</p> <br />
-          <div>Agregado desde {format(new Date(usuario.createdAt), "dd/MM/yyyy")}</div>
+          <div>Agregado desde {usuario.createdAt && format(new Date(usuario.createdAt), "dd/MM/yyyy")}</div>
         </div> 
       )
 

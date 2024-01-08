@@ -1,9 +1,10 @@
 import { useState } from "react"
 import axios from "axios";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import "./Perfil.css"
 import Imagen from "../../assets/usuario.png"
 import { Link } from "react-router-dom";
+import Alert from "../Alert/Alert"
 
 const Login =()=>{
     const[user,setUser]=useState({
@@ -13,7 +14,7 @@ const Login =()=>{
 
     const [cargando,setCargando]=useState(false)
     const [error,setError]= useState(undefined)
-
+    const navigate = useNavigate()
 
     function submit(e){
         setCargando(true)
@@ -26,10 +27,13 @@ const Login =()=>{
             console.log(data.data)
             localStorage.setItem("idUser",data.data.data._id)
             localStorage.setItem("tokenUsuario",data.data.tokenSession)
+            setTimeout(()=>{
+                navigate('/')
+            },100000)
         })
         .catch(e=>{ 
             setCargando(false)
-            setError(e)
+            setError(e.response.data.error)
             console.error(e)})
     }
 
@@ -39,7 +43,7 @@ const Login =()=>{
  <div className="login-container Tcenter">
     <form action="" onSubmit={submit}>
         
-    <h1>Iniciar sesión</h1>
+    <h2>Iniciar sesión</h2>
     <img src={Imagen} alt="" />
 
         <div className="field">
@@ -70,8 +74,11 @@ const Login =()=>{
         
         <Link className="submit" to="/register"><input type="button" value="Registrarse" /></Link>
     </form>
-    {error && <span className="error">{JSON.stringify(error.response.data)}</span>}
- </div>
+    <div>
+        {error ? <Alert message={error} type="error"/>: ""}
+        
+    </div>
+    </div>
  </>
 }
 export default Login
