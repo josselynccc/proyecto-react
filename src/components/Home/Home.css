@@ -1,14 +1,25 @@
 .HomeTitle{
-    padding-top: 1em;
     font-size: 50px;
 }
-
+.HomeTitle2{
+    width: 100%;
+    font-size: 40px;
+    padding-top: 2.5rem;
+}
 .DivHomeCripto{
     display: inline;
     padding: 1em;
     width: 100%;
     border: 3px solid rgb(116, 173, 179);
     border-radius: 10px;
+}
+
+.divfivecriptos {
+    padding: 4em;
+    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 2fr)); /* Corregido: Ajusté la propiedad grid-template-columns */
+    gap: 5em; 
 }
 .HomeCripto{
     font-size: 30px;
@@ -20,17 +31,51 @@
 @media screen and (max-width:460px) {
 
     .HomeTitle{
-        padding-top: 4em;
+        margin-top: 3em;
         font-size: 30px;
     }
     .HomeCripto{
         font-size: 15px;
     }
-}
+    .HomeTitle2{
+        width: 100%;
+        font-size: 20px;
+        padding-top: 2em;
+    }
 
+    .divfivecriptos {
+        padding-left: 0.1em;
+         gap: 1em; 
+    }
+}
+@media screen and (max-width:280px) {
+
+    .HomeTitle{
+        margin-top: 6em;
+    }
+}
 .div_alert{
     top: 0;
     right: 0;
     position: absolute;
     display: inline;
+}
+.div_alert1{
+    display: flex;
+    background: linear-gradient(#0f0c29,#302b63, #24243e);
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    top: 0;
+    left: 0;
+    position: absolute;
+}
+
+@media screen and (max-width:360px) {
+    
+    .divfivecriptos{
+        padding: 0.4em;
+    }
 }

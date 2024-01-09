@@ -16,7 +16,7 @@ const usePeticion=(endpoint)=>{
               } else if (typeof endpoint === "object") {
                 data = await axios.get(`${API_URL}${endpoint.path}`);
               }
-            console.log(data.data.data)
+            /* console.log(data.data.data) */
             setdata(data.data.data)
         })
         .catch(()=>{

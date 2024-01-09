@@ -6,6 +6,10 @@ body{
 :root{
   min-height: 100vh;
   align-items: center;
+  position: absolute;
+  right: 0;
+  left: 0;
+  margin-left: 0;
 }
 .ContainerMenu{
   width: 100%;
@@ -14,7 +18,14 @@ body{
 
 .ContainerBody{
   text-align: center;
-  padding: 2em;
+  padding: 1em;
+}
+
+@media screen and (max-width:300px) {
+    
+  .ContainerBody {
+    padding: 0.5em;
+  }
 }
 
 .Tcenter{
