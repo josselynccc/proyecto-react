@@ -2,7 +2,7 @@ import usePeticion from "../../hooks/usePeticion";
 import "./cripto.css"
 import Upper from "../Shared/upper"
 const CriptoFive = () =>{
-    const criptos= usePeticion(`assets`)
+    const criptos= usePeticion(`assets?search=bitcoin&ids=bitcoin&limit=30&offset=0`)
     const criptosOrder = criptos.sort((a,b) => b.priceUsd - a.priceUsd)
     const criptofive = criptosOrder.slice(0,5)
     console.log(criptofive)
