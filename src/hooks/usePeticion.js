@@ -7,7 +7,11 @@ const usePeticion=(endpoint)=>{
     const API_URL=import.meta.env.VITE_API_URL
 
     useEffect(()=>{
-        axios.get(`${API_URL}${endpoint}`)
+        axios.get(`${API_URL}${endpoint}`,{
+          headers: {
+          Authorization: `Bearer 3ffe6bc2db168942c86803d2a75d07d66554b8afb7ec7837cdd0498d38255f85`
+        }  
+        })
         .then(async (data) =>{
             if (typeof endpoint === "string") {
                 data = await axios.get(`${API_URL}${endpoint}`);

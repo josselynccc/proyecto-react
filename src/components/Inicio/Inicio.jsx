@@ -22,15 +22,19 @@ function Inicio() {
 
 
   useEffect(() => {
-    axios.get(`${API_URL}assets`)
-      .then((data) => {
-        console.log(data)
-        setcriptos(data.data.data)
-      })
-      .catch(() => {
-        console.error("La petición falló");
-      });
-  }, []);
+  axios.get(`${API_URL}assets?search=bitcoin&ids=bitcoin&limit=30&offset=0`, {
+    headers: {
+      Authorization: 'Bearer 3ffe6bc2db168942c86803d2a75d07d66554b8afb7ec7837cdd0498d38255f85'
+    }
+  })
+  .then((data) => {
+    console.log(data);
+    setcriptos(data.data.data);
+  })
+  .catch(() => {
+    console.error("La petición falló");
+  });
+}, []);
 
 
 
