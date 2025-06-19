@@ -28,7 +28,7 @@ const Register = ()=>{
         setCargando(true)
 
 
-        axios.post(`https://servidordeprueba-efb66b95c2c5.herokuapp.com/api/1.0/auth/register`, user)
+        axios.post(`https://servidor-email-production.up.railway.app/api/1.0/auth/register`, user)
         .then(data=>{
             console.log(data)
             setdata(data.statusText)

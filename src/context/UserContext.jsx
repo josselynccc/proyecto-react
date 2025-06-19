@@ -14,7 +14,7 @@ const UserContextProvider = ({children})=>{
         const id = localStorage.getItem("idUser")
         if(tokenUsuario && id)
         {
-            axios.get(`https://servidordeprueba-efb66b95c2c5.herokuapp.com/api/1.0/users/${id}`, {headers: {Authorization: `Bearer ${tokenUsuario}`}})
+            axios.get(`https://servidor-email-production.up.railway.app/api/1.0/users/${id}`, {headers: {Authorization: `Bearer ${tokenUsuario}`}})
         .then(data =>{
             setUsuario(data.data.data)
             /* console.log(data.data.data) */})

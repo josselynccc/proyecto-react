@@ -21,7 +21,7 @@ const Login =()=>{
         e.preventDefault(); // para que no se dispare el formuladiro directamente y actualice la pagina
         //console.log(e.target)
         //console.log(user)
-        axios.post(`https://servidordeprueba-efb66b95c2c5.herokuapp.com/api/1.0/auth/login`, user)
+        axios.post(`https://servidor-email-production.up.railway.app/api/1.0/auth/login`, user)
         .then(data=>{
             setCargando(false)
             console.log(data.data)
