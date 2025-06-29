@@ -36,7 +36,7 @@ const Register = ()=>{
     }
 
     axios
-      .post(`http://localhost:3000/api/1.0/auth/register`, formData)
+      .post(`https://servidor-email-production.up.railway.app/api/1.0/auth/register`, formData)
       .then((response) => {
         console.log(formData)
         if (response.status === 200) {

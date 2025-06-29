@@ -14,8 +14,8 @@ const VerificarCuenta =()=>{
 
         if (token) {
         axios
-            //.get(`https://servidor-email-production.up.railway.app/api/1.0/auth/verify-email?token=${token}`)
-            .get(`http://localhost:3000/api/1.0/auth/verify?token=${token}`)
+            .get(`https://servidor-email-production.up.railway.app/api/1.0/auth/verify?token=${token}`)
+            //.get(`http://localhost:3000/api/1.0/auth/verify?token=${token}`)
             .then(() => {
                 setAlertMessage("Cuenta verificada correctamente.")
                 setAlertType("success")
