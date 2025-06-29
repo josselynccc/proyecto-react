@@ -13,10 +13,26 @@
     display: flex;
     gap: 2em;
     flex-wrap: wrap;
+    
+}
+
+.Menu nav ul li{
+    transition-duration: 2s;
+    transition-property: text, scale;
+}
+
+.Menu nav ul li:hover{
+    scale: 1.1;
 }
 
 .Menu nav ul li a{
+    font-size: 20px;
     text-align: center;
     text-decoration: none;
     color: #b6b2b2;
+}
+
+.Menu nav ul li a:hover{
+    color: rgb(95, 240, 250);
+    text-shadow: 0 0 5px rgb(95, 240, 250);
 }

@@ -19,76 +19,194 @@
 
 
 .login-container{
-    margin-top:3em;
+    margin-top: 5em;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
+    position: relative;
 }
+.login-container h2 {
+  cursor: pointer;
+}
+
 .login-container form{
+    position: relative;
+    z-index: 2;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border-radius: 10px;
-    padding: 1em;
-    border: 0.4em solid rgb(116, 173, 179);
+    padding: 5em;
+    overflow: hidden;
+
+    transition: max-height 3s ease;
 }
+
+.login-container form.expandido {
+  height: 100%; /* suficiente para mostrar todo */
+}
+
+.login-container form > * {
+  position: relative;
+  z-index: 2;
+}
+
+.login-container form::before {
+  content: "";
+  background: linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0) 0%,
+    #2cb6ce 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  height: 800px;
+  width: 150px;
+  position: absolute;
+  animation: rotate 8s linear forwards infinite;
+  z-index: 0;
+  top: 50%;
+  transform-origin: top center;
+}
+.login-container form::after {
+  content: "";
+  height: 97%;
+  width: 97%;
+  background-color: #252150;
+  z-index: 1;
+  position: absolute;
+}
+
+.glow-line.right {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    #351eb7 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  height: 800px;
+  width: 150px;
+  position: absolute;
+  animation: rotateglow 8s linear forwards infinite;
+  z-index: 0;
+  top: 50%;
+  transform-origin: top center;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotateglow {
+  from {
+    transform: rotate(110deg);
+  }
+
+  to {
+    transform: rotate(470deg);
+  }
+}
+
 .field{
     display: flex;
     flex-direction: column;
     padding: 1em;
 }
 
-.field input{
-    border-radius: 10px;
-    background-color: #252150;
-    color: rgb(255, 255, 255);
+.container-input{
+  position: relative;
+  border-bottom: 1px solid #ffffff;
+  width: 100%;
+  outline: none;
+  overflow: hidden;
 }
+
+.container-input input{
+  background: none;
+  border: none;
+  color: white;
+  width: 100%;
+  outline: none;
+  font-size: 16px;
+}
+
+.container-input::after {
+  border: 0;
+  bottom: 0;
+  left: 0;
+  content: '';
+  position: absolute;
+  height: 1.5px;
+  width: 100%;
+  background-color: #52efe5;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+
+.container-input:has(input:focus)::after,
+.container-input:has(input:valid)::after {
+  transform: translateX(0%);
+}
+
     
 .submit input{
-    background-color: rgb(62, 146, 161);
-    color: white;
-    padding: 0.5em;
+  background-color: rgb(62, 146, 161);
+  color: white;
+  padding: 0.5em;
 }
 
 .submit input:hover{
-    background-color: rgb(65, 160, 122);
+  background-color: rgb(65, 160, 122);
 }
 
 .button{
-    width: 100%;
-    background-color: rgb(62, 146, 161);
-    color: white;
-    padding: 0.5em;
+  width: 100%;
+  background-color: rgb(62, 146, 161);
+  color: white;
+  padding: 0.5em;
 }
 .button:hover{
-    background-color: rgb(65, 160, 122);
+  background-color: rgb(65, 160, 122);
 }
 
 .perfil{
-    margin-top: 4em;
-    padding: 2em;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  margin-top: 4em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .perfil h1{
-    margin-top:0;
+  margin-top:0;
+}
+
+@keyframes revelarTorta {
+  0% {
+    clip-path: circle(0% at 50% 50%);
+  }
+  100% {
+    clip-path: circle(50% at 50% 50%);
+  }
 }
 
 .perfil img{
-    border-radius: 100px;
-    padding: 1em;
+  width: 200px;
+  border-radius: 100%;
+  border: 10px inset rgb(30, 210, 192);
+  object-fit: cover;
+  margin: 1em;
+  animation: revelarTorta 1s ease-out;
 }
 
 .error {
-    border-radius: 10px;
-    margin: 0.5em;
-    background-color: #f8d7da;
-    border-color: #f5c6cb;
-    color: #721c24;
-  }
+  background-color: transparent;
+  margin: 1px;
+  color: #e87480;
+  padding: 0.5em;
+}

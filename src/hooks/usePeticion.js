@@ -5,6 +5,7 @@ const usePeticion=(endpoint)=>{
 
     const [data,setdata]=useState([])
     const API_URL=import.meta.env.VITE_API_URL
+    const API_P=import.meta.env.VITE_P
 
     useEffect(() => {
     let url = "";
@@ -21,7 +22,7 @@ const usePeticion=(endpoint)=>{
       .get(url, {
         headers: {
           Authorization:
-            "Bearer 3ffe6bc2db168942c86803d2a75d07d66554b8afb7ec7837cdd0498d38255f85",
+            `Bearer ${API_P}`
         },
       })
       .then((response) => {

@@ -1,21 +1,72 @@
 import usePeticion from "../../hooks/usePeticion";
 import "./cripto.css"
 import Upper from "../Shared/upper"
+
+import bitImg from "../../assets/bit.png"
+import bitPImg from "../../assets/bitp.png"
+import bitWImg from "../../assets/bitw.jpg"
+import pxImg from "../../assets/px.png"
+import tetherImg from "../../assets/tether.jpg"
+import { useRef, useEffect } from "react";
+
 const CriptoFive = () =>{
-    const criptos= usePeticion(`assets?search=bitcoin&ids=bitcoin&limit=30&offset=0`)
+    const criptos= usePeticion(`assets`)
     const criptosOrder = criptos.sort((a,b) => b.priceUsd - a.priceUsd)
     const criptofive = criptosOrder.slice(0,5)
-    console.log(criptofive)
+
+    const imgs = [bitImg, bitPImg, bitWImg, pxImg, tetherImg]
+
+
+    const secciones = useRef([]);
+    useEffect(()=>{
+        const targets = [...secciones.current];
+        if (targets.length === 0) return;
+        const observer = new IntersectionObserver(
+            (entries)=>{
+                entries.forEach((entry)=>{
+                    const target = entry.target
+                    if(entry.isIntersecting){
+                        target.classList.add("apilado")
+                        target.classList.remove("oculto")
+                    } else{
+                        target.classList.add("oculto")
+                        target.classList.remove("apilado")
+                    }
+                })
+            },
+            {
+                threshold: 0.5
+            }
+        )
+        targets.forEach((el)=>{ el &&observer.observe(el)})
+
+        return ()=>{
+            targets.forEach((el)=>{ el && observer.unobserve(el)})
+        }
+    },[criptofive.length])
+
     return(
         <>
-                {criptofive.map((objeto) => (
-                    <div className="divfivecripto" key={objeto.id}>
-                        <h2>{Upper(objeto.id)}</h2>
-                        <p>PrecioUSD: <span>{parseFloat(objeto.priceUsd).toFixed(4)}</span></p>
-                        <p>Simbolo: <span>{objeto.symbol}</span></p>
-                        <p>Cambio de porcentaje en las ultimas 24h: <span>{parseFloat(objeto.changePercent24Hr).toFixed(3)}%</span></p>
+        <div className="contenedor-cripto">
+            {criptofive.map((objeto, index) => (
+                <section
+                key={objeto.id}
+                ref={(el=> (secciones.current[index] = el))}
+                className="imgcripto apilado"
+                style={{ backgroundImage: `url(${imgs[index]})` , zIndex: 100 - index,}}
+                >
+                <div className="divfivecripto">
+                    <h2 className="cripto-nombre-vertical">{Upper(objeto.id)}</h2>
+                    <div className="cripto-detalles">
+                        <p>Precio USD: <span>{parseFloat(objeto.priceUsd).toFixed(4)}</span></p>
+                        <p>Símbolo: <span>{objeto.symbol}</span></p>
+                        <p>Cambio 24h: <span>{parseFloat(objeto.changePercent24Hr).toFixed(3)}%</span></p>
                     </div>
-                ))}
+                </div>
+                </section>
+            ))}
+        </div>
+                
             
         </>
     )

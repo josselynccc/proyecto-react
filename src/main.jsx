@@ -11,6 +11,7 @@ import Perfil from './components/Perfil/Perfil.jsx'
 import UserContextProvider from './context/UserContext.jsx'
 import Login from './components/Perfil/Login.jsx'
 import Register from './components/Perfil/Register.jsx'
+import VerificarCuenta from './components/Perfil/VerificarCuenta.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   // <React.StrictMode>
@@ -28,6 +29,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       </Route>
       <Route path='/login' element={<Login />}/>
       <Route path='/register' element={<Register />}/>
+      <Route path='/verificar-cuenta' element={<VerificarCuenta />}/>
       <Route path='*' element={<Pagina404 />} />
     </Routes>
     </BrowserRouter>

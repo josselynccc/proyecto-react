@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom"
-import './Home.css'
+/* import { Link } from "react-router-dom"
+ */import './Home.css'
 import Alert from "../Alert/Alert"
 import CriptoFive from "../Cripto/criptofive"
 import { useEffect, useState } from "react"
@@ -31,15 +31,11 @@ const Home =()=>{
         }
         
         <h1 className="HomeTitle">BIENVENIDO</h1><br />
-        <div className="DivHomeCripto">
+        {/* <div className="DivHomeCripto">
             <Link className="HomeCripto" to="/criptomonedas">VER CRIPTOMONEDAS</Link>
-        </div> 
-
-        <h1 className="HomeTitle2">LAS 5 CRIPTOMONEDAS CON MAYOR PRECIO</h1>
+        </div> */} 
         <div  className="divfivecriptos"><CriptoFive /></div>
         </>
-
-
     )
 }
 export default Home

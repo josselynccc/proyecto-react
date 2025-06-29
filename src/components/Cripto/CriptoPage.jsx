@@ -6,6 +6,7 @@ import Upper from "../Shared/upper"
 const CriptoPage=()=>{
 
     const API_URL= import.meta.env.VITE_API_URL
+    const API_P= import.meta.env.VITE_P
     const params = useParams() 
     const [cripto,setcripto]=useState([])
 
@@ -13,7 +14,12 @@ const CriptoPage=()=>{
     console.log(params)
 
     useEffect(()=>{
-        axios.get(`${API_URL}assets/${params.id}`)
+        axios.get(`${API_URL}assets/${params.id}`, {
+            headers: {
+                Authorization:
+                    `Bearer ${API_P}`,
+            }
+        })
         .then((data) =>{
             console.log(data.data.data)
             setcripto(data.data.data)

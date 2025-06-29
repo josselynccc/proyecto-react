@@ -14,6 +14,9 @@ const Perfil=()=>{
     return (
         <div className="perfil">
           <h1>Datos del Usuario</h1>
+          {usuario.foto && (
+            <img src={usuario.foto} alt="Foto de perfil" className="foto-perfil" />
+          )}
           <p><span>First Name:  </span>{letter(usuario.nombre)}</p>
           <p><span>Last Name:  </span>{letter(usuario.apellido)}</p>
           <p><span>Edad:  </span>{usuario.edad}</p>

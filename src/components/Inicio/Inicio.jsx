@@ -5,7 +5,7 @@ import './Inicio.css';
 
 function Inicio() {
   const API_URL= import.meta.env.VITE_API_URL
-
+  const API_P= import.meta.env.VITE_P
   const [criptos,setcriptos]=useState([])
 
   /* useEffect(() => {
@@ -22,9 +22,9 @@ function Inicio() {
 
 
   useEffect(() => {
-  axios.get(`${API_URL}assets?search=bitcoin&ids=bitcoin&limit=30&offset=0`, {
+  axios.get(`${API_URL}assets`, {
     headers: {
-      Authorization: 'Bearer 3ffe6bc2db168942c86803d2a75d07d66554b8afb7ec7837cdd0498d38255f85'
+      Authorization: `Bearer ${API_P}`
     }
   })
   .then((data) => {
@@ -45,8 +45,9 @@ function Inicio() {
       <h1>LISTA DE CRIPTOMONEDAS</h1>
       <div>
         <div className='container-list'>
-        {criptos.map(({id,name,priceUsd,symbol,changePercent24Hr}) => (
+        {criptos.map(({id,name,priceUsd,symbol,changePercent24Hr}, index) => (
           <Cripto
+            index={index}
             id={id}
             key={id}
             name={name}

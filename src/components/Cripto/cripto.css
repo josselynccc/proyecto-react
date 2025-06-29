@@ -1,8 +1,20 @@
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
 .contaniner-cripto{
     border: 1px solid rgb(72, 134, 160);
     padding: 1em;
-    border-radius: 5%;
+    border-radius: 10px;
     border-left: 1rem solid rgb(72, 134, 160);
+    opacity: 0;
+    animation: slideInRight 0.5s ease-out forwards;
 }
 
 .LinkCripto{
@@ -17,7 +29,11 @@
 }
 
 .contaniner-cripto:hover{
-    background-color: rgb(72, 134, 160);
+    background-color: rgb(56, 106, 117);
+}
+
+.contaniner-cripto:hover *{
+    scale: 1.3;
 }
 
 h2{
@@ -39,12 +55,79 @@ color: rgb(175, 173, 170);
     color: rgb(250, 19, 19);
 }
 
+/* ---------------------CRIPTOFIVE---------------------- */
+.contenedor-cripto {
+  position: relative;
+}
+
+.imgcripto {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease-out;
+}
+
+.imgcripto.oculto {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: all 0.5s ease;
+}
+
+.imgcripto.apilado {
+  opacity: 1;
+  transform: scale(1);
+  transition: all 0.5s ease;
+}
+
 .divfivecripto{
-    width: 100%;
-    margin: 1em;
-    padding: 1em;
-    border: 0.4rem solid rgb(141, 138, 138);
-    border-radius: 10px;
+  display: flex;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  border-radius: 16px;
+  padding: 20px;
+  width: 80%;
+  max-width: 600px;
+  animation: slideInRight 0.8s ease-out forwards;
+  opacity: 0;
+  transform: translateX(100%);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  overflow: hidden;
+}
+
+.cripto-nombre-vertical {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-size: 3rem;
+  font-weight: bold;
+  margin-right: 20px;
+  text-transform: uppercase;
+  color: #2ecece;
+}
+
+.cripto-detalles {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 1.5rem;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @media screen and (max-width:420px) {

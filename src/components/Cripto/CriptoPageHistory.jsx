@@ -16,6 +16,7 @@ import usePeticion from "../../hooks/usePeticion";
 
 const CriptoPageHistory=()=>{
     const params = useParams()
+    console.log(params.id)
     const cripto1=usePeticion(`assets/${params.id}/history?interval=d1`)
     const formattedDates = cripto1.map((item) => format(new Date(item.time), "dd/MM/yyyy"));
     
